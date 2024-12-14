@@ -11,7 +11,7 @@ const FormInput = ({ label, type, name, register, id, error }) => {
         {...register(name)}
         className={error ? 'input-error' : ''}
       />
-    </div>
+     </div>
   );
 };
 

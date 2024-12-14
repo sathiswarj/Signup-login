@@ -14,10 +14,14 @@ export const signupSchema = yup.object().shape({
     .required('Phone number is required')
     .matches(/^\d+$/, 'Phone number must contain only numbers')
     .matches(/^\d{10}$/, 'Phone number must contain exactly 10 digits'),
-  password: yup
+    password: yup
     .string()
     .min(4, 'Password must be at least 4 characters')
     .max(15, 'Password must be at most 15 characters')
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])/,
+      'Password must contain at least one uppercase letter, one lowercase letter, and one digit'
+    )
     .required('Password is required'),
   confirmPassword: yup
     .string()

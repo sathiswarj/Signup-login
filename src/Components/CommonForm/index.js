@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormInput from '../CommonInput/index';
-import { signupSchema, loginSchema } from '../validationSchema'; 
+import { signupSchema, loginSchema } from '../validationSchema';
 import { Link } from 'react-router-dom';
 
 const formTypes = {
@@ -17,13 +17,13 @@ function FormComponent({ formControls = [], onSubmit, buttonText, isSignup, togg
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(isSignup ? signupSchema : loginSchema),  
+    resolver: yupResolver(isSignup ? signupSchema : loginSchema),
     mode: 'onSubmit',
   });
-   
-  useEffect(() =>{
-    reset()
-  },[isSignup,reset])
+
+  useEffect(() => {
+    reset();
+  }, [isSignup, reset]);
 
   const renderFormElement = (formElement) => {
     const error = errors[formElement.name];
@@ -40,7 +40,6 @@ function FormComponent({ formControls = [], onSubmit, buttonText, isSignup, togg
             error={error}
           />
         );
-       
       default:
         return null;
     }
@@ -59,15 +58,15 @@ function FormComponent({ formControls = [], onSubmit, buttonText, isSignup, togg
       <div className="auth-toggle">
         {isSignup ? (
           <p>
-            Already have an account?{" "}
+            Already have an account?{' '}
             <Link to="/login" onClick={toggleAuthMode}>
               Log in
             </Link>
           </p>
         ) : (
           <p>
-            Don't have an account?{" "}
-            <Link to="/signup" onClick={toggleAuthMode}>
+            Don&apos;t have an account?{' '}
+            <Link to="/" onClick={toggleAuthMode}>
               Sign up
             </Link>
           </p>
